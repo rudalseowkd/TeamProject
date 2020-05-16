@@ -1,10 +1,13 @@
 package com.example.teamproject;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,14 +37,35 @@ public class RecycleAdp extends RecyclerView.Adapter<RecycleAdp.RecyclerViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewHolders holders, int position){
+    public void onBindViewHolder(@NonNull RecyclerViewHolders holders, final int position){
         String url = "http://image.tmdb.org/t/p/w500" + MovieList.get(position).getPoster_path();
+
         Glide.with(Contxt)
                 .load(url)
                 .centerCrop()
                 .crossFade()
                 .into(holders.imageView);
+
+        holders.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(Contxt, ActivityDetail.class);
+                intent.putExtra("title",MovieList.get(position).getTitle());
+                intent.putExtra("original_title", MovieList.get(position).getOriginal_title());
+                intent.putExtra("poster_path",MovieList.get(position).getPoster_path());
+                intent.putExtra("overview",MovieList.get(position).getOverview());
+                intent.putExtra("release_date",MovieList.get(position).getRelease_date());
+                Contxt.startActivity(intent);
+                Log.d("Adapter","Clicked: " + position);
+
+            }
+        });
+
+
     }
+
+
+
 
     @Override
     public int getItemCount(){
@@ -57,5 +81,6 @@ public class RecycleAdp extends RecyclerView.Adapter<RecycleAdp.RecyclerViewHold
             imageView = (ImageView) itemView.findViewById(R.id.imageView);
         }
     }
+
 
 }
