@@ -38,7 +38,8 @@ public class RecycleAdp extends RecyclerView.Adapter<RecycleAdp.RecyclerViewHold
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolders holders, final int position){
-        String url = MovieList.get(position).getPoster_path();
+        //String url = MovieList.get(position).getPoster_path();
+        String url = "https://image.tmdb.org/t/p/w500"+MovieList.get(position).getPoster_path();
 
         Glide.with(Contxt)
                 .load(url)
@@ -49,7 +50,7 @@ public class RecycleAdp extends RecyclerView.Adapter<RecycleAdp.RecyclerViewHold
         holders.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(Contxt, ActivityDetail.class);
+                Intent intent = new Intent(Contxt, DetailActivity.class);
                 intent.putExtra("title",MovieList.get(position).getTitle());
                 intent.putExtra("original_title", MovieList.get(position).getOriginal_title());
                 intent.putExtra("poster_path",MovieList.get(position).getPoster_path());
