@@ -22,29 +22,27 @@ public class ActivityDetail extends AppCompatActivity {
         String poster_path = intent.getStringExtra("poster_path");
         String overview = intent.getStringExtra("overview");
         String release_date = intent.getStringExtra("release_date");
-/*
+
         TextView textView_title = (TextView)findViewById(R.id.tv_title);
         textView_title.setText(title);
         TextView textView_original_title = (TextView)findViewById(R.id.tv_original_title);
         textView_original_title.setText(original_title);
 
- */
-/*
-       // ImageView imageView_poster = (ImageView) findViewById(R.id.iv_poster);
+
+
+        ImageView imageView_poster = (ImageView) findViewById(R.id.iv_poster);
         Glide.with(this)
                 .load(poster_path)
                 .centerCrop()
-                .crossFade();
-              //  .into(imageView_poster);
+                .crossFade()
+                .into(imageView_poster);
 
- */
-/*
+
         TextView textView_overview = (TextView)findViewById(R.id.tv_overview);
         textView_overview.setText(overview);
         TextView textView_release_date = (TextView)findViewById(R.id.tv_release_date);
         textView_release_date.setText(release_date);
-*/
-    }
 
+    }
 
 }

@@ -38,7 +38,7 @@ public class RecycleAdp extends RecyclerView.Adapter<RecycleAdp.RecyclerViewHold
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolders holders, final int position){
-        String url = "http://image.tmdb.org/t/p/w500" + MovieList.get(position).getPoster_path();
+        String url = MovieList.get(position).getPoster_path();
 
         Glide.with(Contxt)
                 .load(url)
@@ -46,7 +46,7 @@ public class RecycleAdp extends RecyclerView.Adapter<RecycleAdp.RecyclerViewHold
                 .crossFade()
                 .into(holders.imageView);
 
-        holders.itemView.setOnClickListener(new View.OnClickListener(){
+        holders.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(Contxt, ActivityDetail.class);
