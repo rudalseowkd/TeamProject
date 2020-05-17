@@ -58,11 +58,8 @@ public class RecycleAdp extends RecyclerView.Adapter<RecycleAdp.RecyclerViewHold
                 intent.putExtra("release_date",MovieList.get(position).getRelease_date());
                 Contxt.startActivity(intent);
                 Log.d("Adapter","Clicked: " + position);
-
             }
         });
-
-
     }
 
 
@@ -82,6 +79,4 @@ public class RecycleAdp extends RecyclerView.Adapter<RecycleAdp.RecyclerViewHold
             imageView = (ImageView) itemView.findViewById(R.id.imageView);
         }
     }
-
-
 }

@@ -31,7 +31,6 @@ public class Movie {
         this.overview = overview;
         this.backdrop_path = backdrop_path;
         this.release_date = release_date;
-
     }
 
     public String getTitle(){
