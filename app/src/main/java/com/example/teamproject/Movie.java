@@ -15,6 +15,10 @@ import java.util.ArrayList;
 
 public class Movie {
 
+
+    //예고편
+    private String id;
+
     private String title;
     private String original_title;
     private String poster_path;
@@ -23,7 +27,7 @@ public class Movie {
     private String release_date;
 
     public Movie(String title, String original_title, String poster_path,
-                 String overview, String backdrop_path, String release_date){
+                 String overview, String backdrop_path, String release_date, String id){
 
         this.title = title;
         this.original_title = original_title;
@@ -31,6 +35,8 @@ public class Movie {
         this.overview = overview;
         this.backdrop_path = backdrop_path;
         this.release_date = release_date;
+
+        this.id = id;
     }
 
     public String getTitle(){
@@ -56,6 +62,8 @@ public class Movie {
     public String getRelease_date(){
         return release_date;
     }
+
+    public String getId() { return id; }
 
 }
 
