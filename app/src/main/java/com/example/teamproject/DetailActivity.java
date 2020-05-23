@@ -8,8 +8,18 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.google.android.youtube.player.YouTubePlayerView;
+
+import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity {
+
+    ArrayList<Youtube> youtubeList;
+
+    private YouTubePlayerView youTubeView;
+    private String trailer01;
+    private String m_id;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
