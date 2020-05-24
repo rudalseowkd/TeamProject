@@ -14,10 +14,10 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@android:color/background_light"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:popupTheme="@style/AppTheme.PopupOverlay"/>
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
 
 
 <!--    <android.support.v7.widget.Toolbar-->
