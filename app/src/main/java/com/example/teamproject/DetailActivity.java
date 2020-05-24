@@ -1,9 +1,12 @@
 package com.example.teamproject;
 
+import android.app.SearchManager;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,8 +48,8 @@ public class DetailActivity extends YouTubeBaseActivity {
 
         Intent intent = getIntent();
         m_id = intent.getStringExtra("id");
-        String title = intent.getStringExtra("title");
-        String original_title = intent.getStringExtra("original_title");
+        final String title = intent.getStringExtra("title");
+        final String original_title = intent.getStringExtra("original_title");
         String poster_path ="https://image.tmdb.org/t/p/w500"+intent.getStringExtra("poster_path");
         String overview = intent.getStringExtra("overview");
         String release_date = intent.getStringExtra("release_date");
@@ -75,6 +78,28 @@ public class DetailActivity extends YouTubeBaseActivity {
 
         mProcessTask.execute(m_id);
 
+        Button bt_search = (Button) findViewById(R.id.bt_search);
+        bt_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //웹브라우저를 열어서 검색한다.
+                String term = original_title +" "+title + " 자막";
+                Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+                intent.putExtra(SearchManager.QUERY, term);
+                startActivity(intent);
+            }
+        });
+
+        Button bt_jamak = (Button) findViewById(R.id.bt_jamak);
+        bt_jamak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                String term = original_title +" "+title + " 자막";
+//                Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+//                intent.putExtra(SearchManager.QUERY, term);
+//                startActivity(intent);
+            }
+        });
     }
 
     public void playVideo(final String videoId, YouTubePlayerView youTubePlayerView) {

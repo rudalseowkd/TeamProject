@@ -7,11 +7,15 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.app.SearchManager;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -52,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         asyncTask.execute(strings[0]);
 
         recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+
     }
 
 
