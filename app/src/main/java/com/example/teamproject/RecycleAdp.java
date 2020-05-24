@@ -51,6 +51,10 @@ public class RecycleAdp extends RecyclerView.Adapter<RecycleAdp.RecyclerViewHold
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(Contxt, DetailActivity.class);
+
+                //예고편
+                intent.putExtra("id",MovieList.get(position).getId());
+
                 intent.putExtra("title",MovieList.get(position).getTitle());
                 intent.putExtra("original_title", MovieList.get(position).getOriginal_title());
                 intent.putExtra("poster_path",MovieList.get(position).getPoster_path());
@@ -58,11 +62,8 @@ public class RecycleAdp extends RecyclerView.Adapter<RecycleAdp.RecyclerViewHold
                 intent.putExtra("release_date",MovieList.get(position).getRelease_date());
                 Contxt.startActivity(intent);
                 Log.d("Adapter","Clicked: " + position);
-
             }
         });
-
-
     }
 
 
@@ -82,6 +83,4 @@ public class RecycleAdp extends RecyclerView.Adapter<RecycleAdp.RecyclerViewHold
             imageView = (ImageView) itemView.findViewById(R.id.imageView);
         }
     }
-
-
 }

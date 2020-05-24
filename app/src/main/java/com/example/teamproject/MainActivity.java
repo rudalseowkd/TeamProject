@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
             Request request = new Request.Builder()
                     .url("https://api.themoviedb.org/3/movie/upcoming?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1")
                     .build();
-
             try{
                 Response response = cli.newCall(request).execute();
                 Gson gson = new GsonBuilder().create();
@@ -84,13 +83,8 @@ public class MainActivity extends AppCompatActivity {
                     movieList.add(p);
                 }
             }
-
             adapter = new RecycleAdp(MainActivity.this,movieList);
             recyclerView.setAdapter(adapter);
         }
-
     }
-
-
-
 }
