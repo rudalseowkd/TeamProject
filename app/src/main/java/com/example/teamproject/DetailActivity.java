@@ -156,11 +156,19 @@ public class DetailActivity extends YouTubeBaseActivity {
             Log.d(TAG, "doInBackground: m_id???????" + m_id);
 
             OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder()
-                    .url("https://api.themoviedb.org/3/movie/"+m_id+"/videos?api_key=5d40d3bc005b20aaf0126f65ab905344")
-                   //* .url("https://api.themoviedb.org/3/tv/"+m_id+"/videos?api_key=5d40d3bc005b20aaf0126f65ab905344")
+            Request request;
+            if(Integer.parseInt(m_id) > 250000) {
+                    request = new Request.Builder()
+                        .url("https://api.themoviedb.org/3/movie/" + m_id + "/videos?api_key=5d40d3bc005b20aaf0126f65ab905344")
 
-                    .build();
+                        .build();
+            }else{
+                request = new Request.Builder()
+                         .url("https://api.themoviedb.org/3/tv/"+m_id+"/videos?api_key=5d40d3bc005b20aaf0126f65ab905344")
+
+                        .build();
+            }
+
             try {
                 Response response = client.newCall(request).execute();
                 Gson gson = new GsonBuilder().create();
