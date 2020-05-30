@@ -158,6 +158,7 @@ public class DetailActivity extends YouTubeBaseActivity {
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
                     .url("https://api.themoviedb.org/3/movie/"+m_id+"/videos?api_key=5d40d3bc005b20aaf0126f65ab905344")
+                   //* .url("https://api.themoviedb.org/3/tv/"+m_id+"/videos?api_key=5d40d3bc005b20aaf0126f65ab905344")
 
                     .build();
             try {

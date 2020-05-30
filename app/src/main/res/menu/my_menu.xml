@@ -37,7 +37,7 @@
         app:showAsAction="never"/>
 
     <item android:id="@+id/action_tv"
-        android:title="TV"
+        android:title="드라마"
         app:showAsAction="never"/>
 
 

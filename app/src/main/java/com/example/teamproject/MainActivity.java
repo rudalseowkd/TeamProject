@@ -31,12 +31,17 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 
-
+// https://api.themoviedb.org/3/tv/popular?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecycleAdp adapter;
+    private RecycleAdpDrama adapterDrama;
+    int searchOption = 1;   // 1=movie, 2=drama
+    String movieUrl = "https://api.themoviedb.org/3/movie/upcoming?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1";
+
     ArrayList<Movie> movieList;
+    ArrayList<Drama> dramaList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +53,15 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
         movieList = new ArrayList<Movie>();
+        dramaList = new ArrayList<Drama>();
 
 //        String search_url = "https://api.themoviedb.org/3/search/movie?api_key=<5d40d3bc005b20aaf0126f65ab905344>&query=<영화제목 String>&language=ko-KR&page=1";
         String search_url = "https://api.themoviedb.org/3/movie/upcoming?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1";
-        String[] strings = {search_url};
+       //* String search_url = "https://api.themoviedb.org/3/tv/popular?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1";
+        //String[] strings = {search_url};
+        String[] strings;
+        strings = new String[] {movieUrl};
+
         AsyTask asyncTask = new AsyTask();
         asyncTask.execute(strings[0]);
 
@@ -91,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("pls", "onCreateOptionsMenu: ??????????????????????????????????????????????????????????????????");
 
         MenuItem searchItem = menu.findItem(R.id.action_search);
+
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setQueryHint("영화제목을 입력하세요.");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
@@ -98,17 +109,24 @@ public class MainActivity extends AppCompatActivity {
             //검색어를 다 입력하고 서치 버튼을 눌렀을때
             @Override
             public boolean onQueryTextSubmit(String s) {
-                Toast.makeText(MainActivity.this, s + "에 대한 영화를 검색합니다.", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, s + "에 대한 검색을 합니다.", Toast.LENGTH_LONG).show();
 
-
+              //  https://api.themoviedb.org/3/tv/popular?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1
                 //여기서 AsyncTask를 이용 검색 리퀘스트로 데이터를 받아 오게 처리 하자. - AsyncTask 공유할것.
-                String search_url = "https://api.themoviedb.org/3/search/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&query="+s;
-                search_url.concat("&language=ko-KR&page=1");
-//                String search_url = "https://api.themoviedb.org/3/movie/upcoming?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1";
-                String[] strings = {search_url};
+                String[] strings;
+                String search_url = "";
+              //  strings = new String[] {movieUrl};
+                if(searchOption==1) {// 영화 검색
+                    search_url = "https://api.themoviedb.org/3/search/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&query=" + s;
+                    search_url.concat("&language=ko-KR&page=1");
+                }else{// 드라마 검색
+                    search_url = "https://api.themoviedb.org/3/search/tv?api_key=5d40d3bc005b20aaf0126f65ab905344&query=" + s;
+                    search_url.concat("&language=ko-KR&page=1");
+
+                }
+                strings = new String[] {search_url};
                 AsyTask asyncTask = new AsyTask();
                 asyncTask.execute(strings[0]);
-
 
                 return false;
             }
@@ -135,12 +153,28 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_settings:
                 Toast.makeText(this, "앱설정-준비중", Toast.LENGTH_LONG).show();
                 return true;
+            case R.id.action_tv:
+                String tvString = "https://api.themoviedb.org/3/tv/popular?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1";
+                String[] strings = {tvString};
+                AsyTaskDrama asyncTask = new AsyTaskDrama();
+                asyncTask.execute(strings[0]);
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                searchOption = 2;// 드라마
+                return true;
+            case R.id.action_movie:
+                String movieString = "https://api.themoviedb.org/3/movie/upcoming?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1";
+                String[] strings2 = {movieString};
+                AsyTask asyncTask2 = new AsyTask();
+                asyncTask2.execute(strings2[0]);
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                searchOption = 1;// 영화
+                return true;
+
             default:
                 Toast.makeText(this, "default", Toast.LENGTH_LONG).show();
                 return super.onOptionsItemSelected(item);
         }
     }
-
 
 
     public class AsyTask extends AsyncTask<String, Void, Movie[]>{
@@ -198,7 +232,63 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+////////////// 수정
+    public class AsyTaskDrama extends AsyncTask<String, Void, Drama[]>{
 
 
+        ProgressDialog progressDlg = new ProgressDialog(MainActivity.this);
+
+        @Override
+        protected void onPreExecute(){
+            super.onPreExecute();
+            progressDlg.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDlg.setMessage("\t로딩중...");
+            progressDlg.show();
+
+            movieList.clear();
+
+        }
+
+        @Override
+        protected Drama[] doInBackground(String... strings){
+
+            Log.d("AsyncTask", "url : " + strings[0]);
+            OkHttpClient cli = new OkHttpClient();
+            Request request = new Request.Builder()
+//                    .url("https://api.themoviedb.org/3/movie/upcoming?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1")
+                    .url(strings[0])
+                    .build();
+            try{
+                Response response = cli.newCall(request).execute();
+                Gson gson = new GsonBuilder().create();
+                JsonParser parser = new JsonParser();
+                JsonElement rootObject = parser.parse(response.body().charStream()).getAsJsonObject().get("results");
+                Drama[] posts = gson.fromJson(rootObject, Drama[].class);
+                return posts;
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Drama[] result){
+            super.onPostExecute(result);
+            progressDlg.dismiss();
+            if(result.length>0){
+                for(Drama p : result){
+                    dramaList.add(p);
+                }
+            }
+            adapterDrama = new RecycleAdpDrama(MainActivity.this,dramaList);
+            recyclerView.setAdapter(adapterDrama);
+            adapterDrama.notifyDataSetChanged();
+        }
+
+
+
+    }
+
+////////////////// 수정
 
 }
