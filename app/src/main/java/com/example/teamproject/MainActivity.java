@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                 String search_url = "";
               //  strings = new String[] {movieUrl};
                 if(searchOption==1) {// 영화 검색
-                    search_url = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&query=" + s;
+                    search_url = "https://api.themoviedb.org/3/search/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&query=" + s;
                     search_url.concat("&language=ko-KR&page=1");
                 }else{// 드라마 검색
                     search_url = "https://api.themoviedb.org/3/search/tv?api_key=5d40d3bc005b20aaf0126f65ab905344&query=" + s;
