@@ -28,9 +28,9 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/action_favorites"
-        android:icon="@drawable/star"
+        android:icon="@android:drawable/btn_star"
         android:title="favo"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
 
     <item android:id="@+id/action_movie"
         android:title="영화"

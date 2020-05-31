@@ -38,8 +38,10 @@ public class MainActivity extends AppCompatActivity {
     private RecycleAdp adapter;
     private RecycleAdpDrama adapterDrama;
     int searchOption = 1;   // 1=movie, 2=drama
-    String movieUrl = "https://api.themoviedb.org/3/movie/upcoming?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1";
-
+    //String movieUrl = "https://api.themoviedb.org/3/movie/upcoming?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1";
+    String movieUrl = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1";
+    //String movieUrl = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1&with_genres=10402";
+    //String movieUrl = "https://api.themoviedb.org/3/genre/movie/list?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1";
     ArrayList<Movie> movieList;
     ArrayList<Drama> dramaList;
 
@@ -122,8 +124,8 @@ public class MainActivity extends AppCompatActivity {
                 }else{// 드라마 검색
                     search_url = "https://api.themoviedb.org/3/search/tv?api_key=5d40d3bc005b20aaf0126f65ab905344&query=" + s;
                     search_url.concat("&language=ko-KR&page=1");
-
                 }
+                //장르별로 해보자
                 strings = new String[] {search_url};
                 AsyTask asyncTask = new AsyTask();
                 asyncTask.execute(strings[0]);
