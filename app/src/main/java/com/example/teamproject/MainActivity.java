@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         dramaList = new ArrayList<Drama>();
 
 //        String search_url = "https://api.themoviedb.org/3/search/movie?api_key=<5d40d3bc005b20aaf0126f65ab905344>&query=<영화제목 String>&language=ko-KR&page=1";
-        String search_url = "https://api.themoviedb.org/3/movie/upcoming?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1";
+        String search_url = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1";
        //* String search_url = "https://api.themoviedb.org/3/tv/popular?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1";
         //String[] strings = {search_url};
         String[] strings;
@@ -119,13 +119,15 @@ public class MainActivity extends AppCompatActivity {
                 String search_url = "";
               //  strings = new String[] {movieUrl};
                 if(searchOption==1) {// 영화 검색
-                    search_url = "https://api.themoviedb.org/3/search/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&query=" + s;
+                    search_url = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&query=" + s;
                     search_url.concat("&language=ko-KR&page=1");
                 }else{// 드라마 검색
                     search_url = "https://api.themoviedb.org/3/search/tv?api_key=5d40d3bc005b20aaf0126f65ab905344&query=" + s;
                     search_url.concat("&language=ko-KR&page=1");
                 }
                 //장르별로 해보자
+
+
                 strings = new String[] {search_url};
                 AsyTask asyncTask = new AsyTask();
                 asyncTask.execute(strings[0]);
@@ -164,21 +166,28 @@ public class MainActivity extends AppCompatActivity {
                 searchOption = 2;// 드라마
                 return true;
             case R.id.action_movie:
-                String movieString = "https://api.themoviedb.org/3/movie/upcoming?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1";
+                String movieString = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1";
                 String[] strings2 = {movieString};
                 AsyTask asyncTask2 = new AsyTask();
                 asyncTask2.execute(strings2[0]);
                 recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
                 searchOption = 1;// 영화
                 return true;
-
+            case R.id.genre_action:
+                String genreString = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1&&with_genres=28";
+                String[] strings3 = {genreString};
+                AsyTask asyncTask3 = new AsyTask();
+                asyncTask3.execute(strings3[0]);
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                searchOption = 1;// 영화
+                return true;
             default:
                 Toast.makeText(this, "default", Toast.LENGTH_LONG).show();
                 return super.onOptionsItemSelected(item);
         }
     }
 
-
+    //<!--    {"genres":[{"id":28,"name":"액션"},{"id":12,"name":"모험"},{"id":16,"name":"애니메이션"},{"id":35,"name":"코미디"},{"id":80,"name":"범죄"},{"id":99,"name":"다큐멘터리"},{"id":18,"name":"드라마"},{"id":10751,"name":"가족"},{"id":14,"name":"판타지"},{"id":36,"name":"역사"},{"id":27,"name":"공포"},{"id":10402,"name":"음악"},{"id":9648,"name":"미스터리"},{"id":10749,"name":"로맨스"},{"id":878,"name":"SF"},{"id":10770,"name":"TV 영화"},{"id":53,"name":"스릴러"},{"id":10752,"name":"전쟁"},{"id":37,"name":"서부"}]}-->
     public class AsyTask extends AsyncTask<String, Void, Movie[]>{
 
 
