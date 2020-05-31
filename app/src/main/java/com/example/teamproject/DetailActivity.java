@@ -83,13 +83,13 @@ public class DetailActivity extends YouTubeBaseActivity {
             @Override
             public void onClick(View view) {
                 //웹브라우저를 열어서 검색한다.
-                String term = original_title +" "+title + " 자막";
+                String term = original_title +" "+title;
                 Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
                 intent.putExtra(SearchManager.QUERY, term);
                 startActivity(intent);
             }
         });
-
+/*
         Button bt_jamak = (Button) findViewById(R.id.bt_jamak);
         bt_jamak.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +99,7 @@ public class DetailActivity extends YouTubeBaseActivity {
 //                intent.putExtra(SearchManager.QUERY, term);
 //                startActivity(intent);
             }
-        });
+        });*/
     }
 
     public void playVideo(final String videoId, YouTubePlayerView youTubePlayerView) {

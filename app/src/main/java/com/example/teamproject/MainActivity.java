@@ -154,9 +154,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_search:
                 //Toast.makeText(this, "action_search", Toast.LENGTH_LONG).show();
                 return true;
-            case R.id.action_settings:
-                Toast.makeText(this, "앱설정-준비중", Toast.LENGTH_LONG).show();
-                return true;
             case R.id.action_tv:
                 String tvString = "https://api.themoviedb.org/3/tv/popular?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1";
                 String[] strings = {tvString};

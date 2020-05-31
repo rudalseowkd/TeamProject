@@ -60,12 +60,7 @@
                     android:layout_weight="1"
                     android:text="구글에 검색" />
 
-                <Button
-                    android:id="@+id/bt_jamak"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="카카오톡 공유" />
+
             </LinearLayout>
 
             <com.google.android.youtube.player.YouTubePlayerView
