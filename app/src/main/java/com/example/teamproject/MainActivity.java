@@ -181,6 +181,142 @@ public class MainActivity extends AppCompatActivity {
                 recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
                 searchOption = 1;// 영화
                 return true;
+            case R.id.genre_adventure:
+                String genreString2 = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1&&with_genres=12";
+                String[] strings4 = {genreString2};
+                AsyTask asyncTask4 = new AsyTask();
+                asyncTask4.execute(strings4[0]);
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                searchOption = 1;// 영화
+                return true;
+            case R.id.genre_anime:
+                String genreString3 = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1&&with_genres=16";
+                String[] strings5 = {genreString3};
+                AsyTask asyncTask5 = new AsyTask();
+                asyncTask5.execute(strings5[0]);
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                searchOption = 1;// 영화
+                return true;
+            case R.id.genre_comedy:
+                String genreString4 = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1&&with_genres=35";
+                String[] strings6 = {genreString4};
+                AsyTask asyncTask6 = new AsyTask();
+                asyncTask6.execute(strings6[0]);
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                searchOption = 1;// 영화
+                return true;
+            case R.id.genre_noir:
+                String genreString5 = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1&&with_genres=80";
+                String[] strings7 = {genreString5};
+                AsyTask asyncTask7 = new AsyTask();
+                asyncTask7.execute(strings7[0]);
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                searchOption = 1;// 영화
+                return true;
+            case R.id.genre_dacumentary:
+                String genreString6 = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1&&with_genres=99";
+                String[] strings8 = {genreString6};
+                AsyTask asyncTask8 = new AsyTask();
+                asyncTask8.execute(strings8[0]);
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                searchOption = 1;// 영화
+                return true;
+            case R.id.genre_drama:
+                String genreString7 = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1&&with_genres=18";
+                String[] strings9 = {genreString7};
+                AsyTask asyncTask9 = new AsyTask();
+                asyncTask9.execute(strings9[0]);
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                searchOption = 1;// 영화
+                return true;
+            case R.id.genre_family:
+                String genreString8 = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1&&with_genres=10751";
+                String[] strings10 = {genreString8};
+                AsyTask asyncTask10 = new AsyTask();
+                asyncTask10.execute(strings10[0]);
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                searchOption = 1;// 영화
+                return true;
+            case R.id.genre_fantasy:
+                String genreString9 = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1&&with_genres=14";
+                String[] strings11 = {genreString9};
+                AsyTask asyncTask11 = new AsyTask();
+                asyncTask11.execute(strings11[0]);
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                searchOption = 1;// 영화
+                return true;
+            case R.id.genre_history:
+                String genreString10 = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1&&with_genres=36";
+                String[] strings12 = {genreString10};
+                AsyTask asyncTask12 = new AsyTask();
+                asyncTask12.execute(strings12[0]);
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                searchOption = 1;// 영화
+                return true;
+            case R.id.genre_gonpo:
+                String genreString11 = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1&&with_genres=27";
+                String[] strings13 = {genreString11};
+                AsyTask asyncTask13 = new AsyTask();
+                asyncTask13.execute(strings13[0]);
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                searchOption = 1;// 영화
+                return true;
+            case R.id.genre_music:
+                String genreString12 = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1&&with_genres=10402";
+                String[] strings14 = {genreString12};
+                AsyTask asyncTask14 = new AsyTask();
+                asyncTask14.execute(strings14[0]);
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                searchOption = 1;// 영화
+                return true;
+            case R.id.genre_mystery:
+                String genreString13 = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1&&with_genres=9648";
+                String[] strings15 = {genreString13};
+                AsyTask asyncTask15 = new AsyTask();
+                asyncTask15.execute(strings15[0]);
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                searchOption = 1;// 영화
+                return true;
+            case R.id.genre_romance:
+                String genreString114 = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1&&with_genres=10749";
+                String[] strings16 = {genreString114};
+                AsyTask asyncTask16 = new AsyTask();
+                asyncTask16.execute(strings16[0]);
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                searchOption = 1;// 영화
+                return true;
+            case R.id.genre_sf:
+                String genreString15 = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1&&with_genres=878";
+                String[] strings17 = {genreString15};
+                AsyTask asyncTask17 = new AsyTask();
+                asyncTask17.execute(strings17[0]);
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                searchOption = 1;// 영화
+                return true;
+            case R.id.genre_scriler:
+                String genreString16 = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1&&with_genres=53";
+                String[] strings18 = {genreString16};
+                AsyTask asyncTask18 = new AsyTask();
+                asyncTask18.execute(strings18[0]);
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                searchOption = 1;// 영화
+                return true;
+            case R.id.genre_war:
+                String genreString17 = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1&&with_genres=10752";
+                String[] strings19 = {genreString17};
+                AsyTask asyncTask19 = new AsyTask();
+                asyncTask19.execute(strings19[0]);
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                searchOption = 1;// 영화
+                return true;
+            case R.id.genre_sibal:
+                String genreString18 = "https://api.themoviedb.org/3/discover/movie?api_key=5d40d3bc005b20aaf0126f65ab905344&language=ko-KR&page=1&&with_genres=37";
+                String[] strings20 = {genreString18};
+                AsyTask asyncTask20 = new AsyTask();
+                asyncTask20.execute(strings20[0]);
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,2));
+                searchOption = 1;// 영화
+                return true;
             default:
                 Toast.makeText(this, "default", Toast.LENGTH_LONG).show();
                 return super.onOptionsItemSelected(item);
