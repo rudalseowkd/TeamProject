@@ -50,9 +50,9 @@ public class DetailActivity extends YouTubeBaseActivity {
         m_id = intent.getStringExtra("id");
         final String title = intent.getStringExtra("title");
         final String original_title = intent.getStringExtra("original_title");
-        String poster_path ="https://image.tmdb.org/t/p/w500"+intent.getStringExtra("poster_path");
-        String overview = intent.getStringExtra("overview");
-        String release_date = intent.getStringExtra("release_date");
+        final String poster_path ="https://image.tmdb.org/t/p/w500"+intent.getStringExtra("poster_path");
+        final String overview = intent.getStringExtra("overview");
+        final String release_date = intent.getStringExtra("release_date");
 
         TextView textView_title = (TextView)findViewById(R.id.tv_title);
         textView_title.setText(title);
@@ -89,6 +89,28 @@ public class DetailActivity extends YouTubeBaseActivity {
                 startActivity(intent);
             }
         });
+
+        Button bt_review = (Button) findViewById(R.id.bt_review);
+        bt_review.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //웹브라우저를 열어서 검색한다.
+//                String term = original_title +" "+title;
+//                Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+//                intent.putExtra(SearchManager.QUERY, term);
+//                startActivity(intent);
+                Intent intent = new Intent(getBaseContext(), ReviewActivity.class);
+                //예고편
+                intent.putExtra("title",title);
+                intent.putExtra("original_title", original_title);
+                intent.putExtra("poster_path",poster_path);
+                intent.putExtra("overview",overview);
+                intent.putExtra("release_date",release_date);
+
+                startActivity(intent);
+            }
+        });
+
 /*
         Button bt_jamak = (Button) findViewById(R.id.bt_jamak);
         bt_jamak.setOnClickListener(new View.OnClickListener() {
