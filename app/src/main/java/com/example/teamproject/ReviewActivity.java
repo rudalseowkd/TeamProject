@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -95,11 +96,7 @@ public class ReviewActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String review_data;
-                review_data = edt.getText().toString();
-                Log.d("OUT", "onCreate: " + review_data);
-                db.execSQL("INSERT INTO movie_review VALUES (null, '" + title + "','" + poster_path + "','" + release_date +"','" + review_data + "');");
-//                finish();
+                finish();
             }
         });
 
@@ -107,21 +104,16 @@ public class ReviewActivity extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Cursor cursor;
+                String review_data;
+                review_data = edt.getText().toString();
+                Log.d("OUT", "onCreate: " + review_data);
+                db.execSQL("INSERT INTO movie_review VALUES (null, '" + title + "','" + poster_path + "','" + release_date +"','" + review_data + "');");
+//
+//                Toast.makeText(getApplicationContext(),
+//                        "저장 완료",
+//                        Toast.LENGTH_SHORT).show();
 
-//                cursor = db.rawQuery("SELECT title, poster_path, release_date  FROM movie_review WHERE title == ;",null);
-                cursor = db.rawQuery("SELECT title, poster_path, release_date, review_data  FROM movie_review ;",null);
-                while (cursor.moveToNext()) {
-                    String title_1 = cursor.getString(0);
-                    String poster_path_1 = cursor.getString(1);
-                    String release_date_1 = cursor.getString(2);
-                    String review_data_1 = cursor.getString(3);
-                    Log.v("OUT", "vertex pos (" + title_1 + ", " + poster_path_1 + ", " + release_date_1 + ", " + review_data_1 );
-
-//                    items.add(x + ", " + y + ", " + z);
-                }
-
-//                finish();
+                finish();
             }
         });
 
