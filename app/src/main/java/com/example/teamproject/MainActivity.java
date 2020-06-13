@@ -155,7 +155,8 @@ public class MainActivity extends AppCompatActivity {
 
         switch(id){
             case R.id.review_menu:
-                
+                Intent intent = new Intent(getBaseContext(), reviewActivity2.class);
+                startActivity(intent);
                 return true;
             case R.id.action_search:
                 //Toast.makeText(this, "action_search", Toast.LENGTH_LONG).show();
