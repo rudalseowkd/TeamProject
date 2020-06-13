@@ -2,22 +2,64 @@ package com.example.teamproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+
+class DBHelper extends SQLiteOpenHelper {
+    private static final String DATABASE_NAME = "moview_review2.db";
+    private static final int DATABASE_VERSION = 1;
+
+    public DBHelper(Context context) {
+        // invoke super constructor.
+        super(context, DATABASE_NAME, null,DATABASE_VERSION);
+
+    }
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        // create two tables, vertices and triangles
+
+                db.execSQL("create table movie_review ( _id integer primary key autoincrement, title String, poster_path String, release_date String, review_data String); ");
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // drop the two tables, vertices and triangles
+        db.execSQL("drop table if exists movie_review");
+        onCreate(db);
+    }
+}
+
 public class ReviewActivity extends AppCompatActivity {
+
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_review);
+
+        DBHelper helper = new DBHelper(this);
+        try {
+            db = helper.getWritableDatabase();
+        } catch (SQLException ex) {
+            db = helper.getReadableDatabase();
+        }
+
         Intent intent = getIntent();
 
         final String title = intent.getStringExtra("title");
@@ -46,10 +88,18 @@ public class ReviewActivity extends AppCompatActivity {
 
 
         Button finishBtn = findViewById(R.id.button_finish);
-        finishBtn.setOnClickListener(new View.OnClickListener() {
+        final EditText edt = (EditText)findViewById(R.id.editReview);
+
+
+                finishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+
+                String review_data;
+                review_data = edt.getText().toString();
+                Log.d("OUT", "onCreate: " + review_data);
+                db.execSQL("INSERT INTO movie_review VALUES (null, '" + title + "','" + poster_path + "','" + release_date +"','" + review_data + "');");
+//                finish();
             }
         });
 
@@ -57,7 +107,21 @@ public class ReviewActivity extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Cursor cursor;
+
+//                cursor = db.rawQuery("SELECT title, poster_path, release_date  FROM movie_review WHERE title == ;",null);
+                cursor = db.rawQuery("SELECT title, poster_path, release_date, review_data  FROM movie_review ;",null);
+                while (cursor.moveToNext()) {
+                    String title_1 = cursor.getString(0);
+                    String poster_path_1 = cursor.getString(1);
+                    String release_date_1 = cursor.getString(2);
+                    String review_data_1 = cursor.getString(3);
+                    Log.v("OUT", "vertex pos (" + title_1 + ", " + poster_path_1 + ", " + release_date_1 + ", " + review_data_1 );
+
+//                    items.add(x + ", " + y + ", " + z);
+                }
+
+//                finish();
             }
         });
 
