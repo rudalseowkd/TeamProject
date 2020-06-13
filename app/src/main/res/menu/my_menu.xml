@@ -5,6 +5,12 @@
     tools:context="com.example.tool_bar.MainActivity">
 
     <item
+        android:id="@+id/review_menu"
+        android:icon="@android:drawable/btn_star_big_on"
+        app:showAsAction="always"
+        android:title="review_menu" />
+
+    <item
         android:id="@+id/action_search"
         android:icon="@android:drawable/ic_menu_search"
         android:title="Search"

@@ -154,6 +154,9 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         switch(id){
+            case R.id.review_menu:
+                
+                return true;
             case R.id.action_search:
                 //Toast.makeText(this, "action_search", Toast.LENGTH_LONG).show();
                 return true;
