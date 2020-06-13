@@ -2,6 +2,7 @@ package com.example.teamproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -42,9 +43,18 @@ public class reviewActivity2 extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id){
-                Toast.makeText(getApplicationContext(),
-                        myAdapter.getItem(position).getTitle(),
-                        Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(),
+//                        myAdapter.getItem(position).getTitle(),
+//                        Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getBaseContext(), ReviewdetailActivity.class);
+                //예고편
+                intent.putExtra("title",myAdapter.getItem(position).getTitle());
+                intent.putExtra("poster_path",myAdapter.getItem(position).getPoster_path());
+                intent.putExtra("release_date",myAdapter.getItem(position).getRelase_date());
+                intent.putExtra("review_data",myAdapter.getItem(position).getReview_data());
+
+                startActivity(intent);
+                finish();
             }
         });
     }

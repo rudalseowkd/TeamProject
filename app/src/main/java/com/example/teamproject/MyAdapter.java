@@ -50,11 +50,11 @@ public class MyAdapter extends BaseAdapter {
 
         ImageView imageView_poster = (ImageView) view.findViewById(R.id.poster_view);
 
-//        Glide.with(this)
-//                .load(poster_path)
-//                .centerCrop()
-//                .crossFade()
-//                .into(imageView_poster);
+        Glide.with(mContext)
+                .load(sample.get(position).getPoster_path())
+                .centerCrop()
+                .crossFade()
+                .into(imageView_poster);
 
         title.setText(sample.get(position).getTitle());
         date.setText(sample.get(position).getRelase_date());

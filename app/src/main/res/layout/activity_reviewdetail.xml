@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ReviewActivity">
+    tools:context=".ReviewdetailActivity">
+
 
     <ScrollView
         android:focusable="true"
@@ -52,21 +53,20 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button_finish"
+                    android:id="@+id/button_delete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="취소" />
+                    android:text="리뷰 삭제" />
 
                 <Button
-                    android:id="@+id/button_save"
+                    android:id="@+id/button_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="저장" />
+                    android:text="리뷰 수정" />
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
